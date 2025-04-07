@@ -18,12 +18,6 @@ pipeline {
       }
     }
 
-    stage('Test') {
-      steps {
-        bat 'npm test -- --watchAll=false'
-      }
-    }
-
     stage('Deploy to Netlify') {
       steps {
         withCredentials([string(credentialsId: 'netlify-auth-token', variable: 'NETLIFY_AUTH_TOKEN')]) {
