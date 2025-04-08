@@ -18,11 +18,16 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      steps {
+        bat 'call npm test -- --watchAll=false --passWithNoTests'
+      }
+    }
+
     stage('Deploy to Netlify') {
       steps {
         withCredentials([string(credentialsId: 'netlify-token', variable: 'NETLIFY_AUTH_TOKEN')]) {
           bat "node_modules\\.bin\\netlify deploy --prod --dir=build --site=%NETLIFY_SITE_ID% --auth=%NETLIFY_AUTH_TOKEN%"
-
         }
       }
     }
