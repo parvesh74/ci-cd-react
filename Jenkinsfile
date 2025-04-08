@@ -1,12 +1,11 @@
 pipeline {
   agent any
 
-  
+
 triggers {
   pollSCM('* * * * *')
 }
 
-does it need to be outside my pipeline? 
   environment {
     NETLIFY_SITE_ID = '4b1dd9a5-08fb-41e4-b7ae-a19dad452fb9'
   }
